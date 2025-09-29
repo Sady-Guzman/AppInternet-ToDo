@@ -30,7 +30,7 @@ async function loadTodos() {
 
 async function addTodo() {
   const text = document.getElementById("newTodo").value.trim();
-  if (!text) return alert("Escribe algo primero");
+  if (!text) return alert("Escribe algo");
 
   const userId = localStorage.getItem("user_id");
   if (!userId) return alert("Usuario no logueado");
@@ -49,6 +49,7 @@ async function addTodo() {
   document.getElementById("newTodo").value = "";
   loadTodos();
 }
+
 
 loadTodos();
 

@@ -1,15 +1,7 @@
-import { sql } from "@vercel/postgres"; // si usas integración de Vercel
+import { sql } from "@vercel/postgres";
 
 export default async function handler(req, res) {
   try {
-    if (req.method === "GET") {
-      const { user_id } = req.query;
-      if (!user_id) return res.status(400).json({ error: "Falta user_id" });
-
-      const result = await sql`SELECT * FROM todos WHERE user_id = ${user_id} ORDER BY id`;
-      return res.status(200).json(result.rows);
-    }
-
     if (req.method === "POST") {
       const { text, user_id } = req.body;
       if (!text || !user_id) return res.status(400).json({ error: "Falta texto o user_id" });
@@ -20,6 +12,16 @@ export default async function handler(req, res) {
         RETURNING *;
       `;
       return res.status(201).json(result.rows[0]);
+    }
+
+    if (req.method === "GET") {
+      const { user_id } = req.query;
+      if (!user_id) return res.status(400).json({ error: "Falta user_id" });
+
+      const result = await sql`
+        SELECT * FROM todos WHERE user_id = ${user_id} ORDER BY id
+      `;
+      return res.status(200).json(result.rows);
     }
 
     res.setHeader("Allow", ["GET", "POST"]);
