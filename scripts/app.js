@@ -29,20 +29,26 @@ async function loadTodos() {
 }
 
 async function addTodo() {
-  const text = document.getElementById("newTodo").value;
-  if (!text) return;
+  const text = document.getElementById("newTodo").value.trim();
+  if (!text) return alert("Escribe algo primero");
 
   const userId = localStorage.getItem("user_id");
   if (!userId) return alert("Usuario no logueado");
 
-  await fetch("/api/todos", {
+  const res = await fetch("/api/todos", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text, user_id: userId })
+    body: JSON.stringify({ text, user_id: userId }) // <-- asegúrate que coincide con backend
   });
+
+  if (!res.ok) {
+    const data = await res.json();
+    return alert(data.error || "Error agregando todo");
+  }
 
   document.getElementById("newTodo").value = "";
   loadTodos();
 }
 
 loadTodos();
+

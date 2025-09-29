@@ -1,33 +1,38 @@
-// api/todos.js
 import { Pool } from "pg";
 
-// Conexión a Neon usando variable de entorno en Vercel
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }, // necesario para Neon
+  ssl: { rejectUnauthorized: false }
 });
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    // obtener todos
-    const result = await pool.query("SELECT * FROM todos ORDER BY id");
+    const userId = req.query.user_id;
+    if (!userId) return res.status(400).json({ error: "Falta user_id" });
+
+    const result = await pool.query(
+      "SELECT * FROM todos WHERE user_id=$1 ORDER BY id",
+      [userId]
+    );
     return res.status(200).json(result.rows);
   }
 
   if (req.method === "POST") {
-    // agregar un todo
-    const { text } = req.body;
-    if (!text) {
-      return res.status(400).json({ error: "Falta el texto" });
+    try {
+      const { text, user_id } = req.body;  // Ojo aquí
+      if (!text || !user_id) return res.status(400).json({ error: "Falta texto o user_id" });
+
+      const result = await pool.query(
+        "INSERT INTO todos (user_id, text) VALUES ($1, $2) RETURNING *",
+        [user_id, text]
+      );
+      return res.status(201).json(result.rows[0]);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error interno" });
     }
-    const result = await pool.query(
-      "INSERT INTO todos (text, status) VALUES ($1, $2) RETURNING *",
-      [text, "pendiente"]
-    );
-    return res.status(201).json(result.rows[0]);
   }
 
-  // método no soportado
   res.setHeader("Allow", ["GET", "POST"]);
-  return res.status(405).end(`Método ${req.method} no permitido`);
+  res.status(405).end(`Método ${req.method} no permitido`);
 }
