@@ -38,7 +38,7 @@ async function addTodo() {
   const res = await fetch("/api/todos", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text, user_id: userId }) // <-- asegúrate que coincide con backend
+    body: JSON.stringify({ text, user_id: userId })
   });
 
   if (!res.ok) {
@@ -51,4 +51,7 @@ async function addTodo() {
 }
 
 loadTodos();
+
+
+
 
