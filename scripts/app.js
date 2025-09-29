@@ -1,27 +1,46 @@
-// public/app.js
-
 async function loadTodos() {
-  const res = await fetch("/api/todos");
+  const userId = localStorage.getItem("user_id"); 
+  if (!userId) return;
+
+  const res = await fetch(`/api/todos?user_id=${userId}`);
   const todos = await res.json();
-  document.getElementById("todoList").innerHTML = todos
-    .map(
-      t => `
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        ${t.text}
-        <span class="badge bg-secondary">${t.status}</span>
-      </li>`
-    )
-    .join("");
+
+  // Limpiar listas
+  document.getElementById("pendientes").innerHTML = "";
+  document.getElementById("enProgreso").innerHTML = "";
+  document.getElementById("completados").innerHTML = "";
+
+  todos.forEach(t => {
+    const li = document.createElement("li");
+    li.className = "list-group-item d-flex justify-content-between align-items-center";
+    li.textContent = t.text;
+
+    // Badge con status
+    const span = document.createElement("span");
+    span.className = "badge bg-secondary";
+    span.textContent = t.status;
+    li.appendChild(span);
+
+    // Agregar a la columna correcta
+    if (t.status === "pendiente") document.getElementById("pendientes").appendChild(li);
+    if (t.status === "en_progreso") document.getElementById("enProgreso").appendChild(li);
+    if (t.status === "terminada") document.getElementById("completados").appendChild(li);
+  });
 }
 
 async function addTodo() {
   const text = document.getElementById("newTodo").value;
   if (!text) return;
+
+  const userId = localStorage.getItem("user_id");
+  if (!userId) return alert("Usuario no logueado");
+
   await fetch("/api/todos", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text }),
+    body: JSON.stringify({ text, user_id: userId })
   });
+
   document.getElementById("newTodo").value = "";
   loadTodos();
 }
