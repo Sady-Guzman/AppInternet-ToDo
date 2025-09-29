@@ -1,2 +1,2 @@
-# app_internet_pinturillo
-pizarra con distintos colores
+# AppInternet_ToDo
+Laboratorio para Aplicaciones de Internet - ULS
