@@ -1,7 +1,36 @@
-// public/login.js
+async function login() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
 
-function login() {
-  // Aquí podrías validar usuario/contraseña
-  // Por ahora solo redirige
-  window.location.href = "/index.html";
+  const res = await fetch("/api/users", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password, action: "login" })
+  });
+  const data = await res.json();
+
+  if (res.ok) {
+    localStorage.setItem("user_id", data.user.id);
+    window.location.href = "/index.html";
+  } else {
+    alert(data.error);
+  }
+}
+
+async function register() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  const res = await fetch("/api/users", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password, action: "register" })
+  });
+  const data = await res.json();
+
+  if (res.ok) {
+    alert("Usuario registrado con éxito. Ahora puedes iniciar sesión.");
+  } else {
+    alert(data.error);
+  }
 }
