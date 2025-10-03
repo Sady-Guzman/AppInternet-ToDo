@@ -22,13 +22,14 @@ export default async function handler(req, res) {
       }
 
       const { text, user_id } = body;
-      if (!text || !user_id) {
+      const userIdNumber = Number(user_id);
+      if (!text || !userIdNumber) {
         return res.status(400).json({ error: "Falta texto o user_id" });
       }
 
       const result = await sql`
         INSERT INTO todos (user_id, text, status)
-        VALUES (${user_id}, ${text}, 'pendiente')
+        VALUES (${userIdNumber}, ${text}, 'pendiente')
         RETURNING *;
       `;
       return res.status(201).json(result.rows[0]);
