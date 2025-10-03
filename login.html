@@ -14,6 +14,7 @@
   <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
     <h2 class="text-center mb-4">Iniciar sesión</h2>
 
+    <!-- INPUTS -->
     <div class="mb-3">
       <label for="username" class="form-label">Usuario</label>
       <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario">
@@ -23,8 +24,15 @@
       <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
     </div>
 
-    <button class="btn btn-primary" onclick="login()">Entrar</button>
-    <button class="btn btn-secondary" onclick="register()">Registrarse</button>
+    <!-- BOTONES -->
+    <div class="mb-3">
+      <button class="btn btn-primary" onclick="login()">Entrar</button>
+    </div>
+
+    <div class="mb-3">
+      <button class="btn btn-secondary" onclick="register()">Registrarse</button>
+    </div>
+
   </div>
 
   <script src="/scripts/login.js"></script>
