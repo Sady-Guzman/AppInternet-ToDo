@@ -1,18 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Login - ToDo App</title>
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
     rel="stylesheet"
   >
   <link rel="stylesheet" href="/scripts/style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    }
+    .card {
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+    h2 {
+      font-weight: 700;
+      color: #333;
+    }
+    .btn-info {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .modal-header {
+      background-color: #f1f5f9;
+    }
+    .modal-footer {
+      background-color: #f9fafb;
+    }
+  </style>
 </head>
-<body class="d-flex align-items-center justify-content-center vh-100 bg-light">
+<body class="d-flex align-items-center justify-content-center vh-100">
 
   <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
-    <h2 class="text-center mb-4">Iniciar sesión</h2>
+    <h2 class="text-center mb-4">Bienvenido</h2>
 
     <!-- INPUTS -->
     <div class="mb-3">
@@ -25,31 +49,33 @@
     </div>
 
     <!-- BOTONES -->
-    <div class="d-flex justify-content-center gap-2 mb-3">
-      <button class="btn btn-primary" onclick="login()">Entrar</button>
-      <button class="btn btn-secondary" onclick="register()">Registrarse</button>
-      <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#infoModal">Info</button>
+    <div class="d-flex justify-content-center gap-2 mt-4">
+      <button class="btn btn-primary flex-fill" onclick="login()">Entrar</button>
+      <button class="btn btn-secondary flex-fill" onclick="register()">Registrarse</button>
+      <button class="btn btn-info flex-fill" data-bs-toggle="modal" data-bs-target="#infoModal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+          <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1a6 6 0 1 1 0 12A6 6 0 0 1 8 2z"/>
+          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .875-.252.973-.598l.088-.416c.073-.344.145-.418.513-.418h.088v-.458h-.088c-.454 0-.573-.176-.543-.469l.738-3.468c.194-.897-.105-1.319-.808-1.319-.545 0-.875.252-.973.598l-.088.416c-.073.344-.145.418-.513.418h-.088v.458h.088c.454 0 .573.176.543.469z"/>
+          <circle cx="8" cy="4.5" r="1"/>
+        </svg>
+        Info
+      </button>
     </div>
-
-
-    </div>
-
   </div>
 
-  
   <!-- Modal de Información -->
   <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="infoModalLabel">Instrucciones de registro</h5>
+          <h5 class="modal-title" id="infoModalLabel">Instrucciones de Registro</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
           <ul>
-            <li>Ingresa un nombre de usuario.</li>
-            <li>Ingresa una contraseña.</li>
-            <li>Haz click en "Registrarse" para crear tu cuenta en caso de ser la priemera vez.</li>
+            <li>Ingresa un nombre de usuario único.</li>
+            <li>Ingresa una contraseña segura.</li>
+            <li>Haz click en "Registrarse" para crear tu cuenta si es la primera vez.</li>
             <li>Luego haz click en "Entrar" para acceder al dashboard.</li>
           </ul>
         </div>
@@ -59,8 +85,8 @@
       </div>
     </div>
   </div>
-  
-  <!-- Bootstrap JS Bundle (incluye Popper.js) -->
+
+  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/scripts/login.js"></script>
 
