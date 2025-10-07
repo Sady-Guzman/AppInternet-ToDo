@@ -61,6 +61,14 @@ async function loadTodos() {
     if (t.status === "pendiente") document.getElementById("pendientes").appendChild(li);
     if (t.status === "en_progreso") document.getElementById("enProgreso").appendChild(li);
     if (t.status === "terminada") document.getElementById("completados").appendChild(li);
+
+    // Botón eliminar
+    const delBtn = document.createElement("button");
+    delBtn.className = "btn btn-sm btn-outline-danger ms-2";
+    delBtn.textContent = "Eliminar";
+    delBtn.onclick = () => deleteTodo(t.id);
+    li.appendChild(delBtn);
+
   });
 }
 
@@ -105,5 +113,25 @@ async function changeStatus(id, newStatus) {
 
   loadTodos();
 }
+
+async function deleteTodo(id) {
+  const confirmDelete = confirm("¿Seguro que quieres eliminar este ToDo?");
+  if (!confirmDelete) return;
+
+  const res = await fetch("/api/todos", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id })
+  });
+
+  if (!res.ok) {
+    const data = await res.json();
+    return alert(data.error || "Error eliminando ToDo");
+  }
+
+  loadTodos(); // recargar lista después de eliminar
+}
+
+
 
 loadTodos();

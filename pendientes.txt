@@ -1,7 +1,6 @@
-// 
+// Pendiente
 
 * usar hash para contrasenas en vez de guardar texto plano en NEON.
-* ft. cerrar sesion.
 * cache/cookies para sesion.
 * arreglar front botones login.
 * agg instrucciones sobre login/registro en landing page.
