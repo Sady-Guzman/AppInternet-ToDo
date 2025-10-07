@@ -27,8 +27,7 @@ body {
 }
 
 .todo-card {
-  position: relative; /* importante para que dropdown tenga referencia */
-  z-index: 0;         /* base para que esté sobre el fondo */
+  position: relative; /* necesario para que dropdown se posicione respecto a la card */
   border-radius: 0.8rem;
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
@@ -38,14 +37,14 @@ body {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  overflow: visible; /* permite que el dropdown se muestre fuera de la card */
+  overflow: visible; /* clave: permite que el dropdown se muestre fuera de la card */
+}
+
+.dropdown-menu {
+  z-index: 2000 !important; /* suficientemente alto para que siempre quede encima */
 }
 
 .todo-card:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.dropdown-menu {
-  z-index: 1050 !important; /* más alto que los z-index de las cards */
 }
