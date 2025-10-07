@@ -41,15 +41,26 @@ async function loadTodos() {
 
     ["pendiente", "en_progreso", "terminada"].forEach(statusOption => {
       if (statusOption === t.status) return; // no mostrar estado actual
+
       const item = document.createElement("li");
       const a = document.createElement("a");
       a.className = "dropdown-item";
       a.href = "#";
-      a.textContent = statusOption;
+
+      // Mostrar texto amigable
+      let displayText = "";
+      switch(statusOption) {
+        case "pendiente": displayText = "Pendiente"; break;
+        case "en_progreso": displayText = "En progreso"; break;
+        case "terminada": displayText = "Completados"; break;
+      }
+
+      a.textContent = displayText;
       a.onclick = (e) => {
         e.preventDefault();
-        changeStatus(t.id, statusOption);
+        changeStatus(t.id, statusOption); // mantener valor interno para la DB
       };
+
       item.appendChild(a);
       menu.appendChild(item);
     });
