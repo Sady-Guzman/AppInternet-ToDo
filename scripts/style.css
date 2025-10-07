@@ -38,13 +38,16 @@ body {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   overflow: visible; /* clave: permite que el dropdown se muestre fuera de la card */
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
 }
 
 .dropdown-menu {
   z-index: 2000 !important; /* suficientemente alto para que siempre quede encima */
 }
 
-/* .todo-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-} */
+.todo-card:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* sombra más grande */
+  border: 1px solid #aaa; /* opcional, borde sutil */
+  background-color: #f9f9f9; /* color más claro al pasar el mouse */
+}
+
