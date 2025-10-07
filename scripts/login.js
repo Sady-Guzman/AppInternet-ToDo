@@ -29,15 +29,12 @@ async function register() {
   const data = await res.json();
 
   if (res.ok) {
-    alert("Usuario registrado con éxito. Ahora puedes iniciar sesión.");
-  } else {
+    localStorage.setItem("user_id", data.user.id);
+    localStorage.setItem("username", data.user.username); // <--- guardar username
+    window.location.href = "/index.html";
+  }
+  else {
     alert(data.error);
   }
 }
 
-
-if (res.ok) {
-  localStorage.setItem("user_id", data.user.id);
-  localStorage.setItem("username", data.user.username); // <--- guardar nombre
-  window.location.href = "/index.html";
-}
