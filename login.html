@@ -25,16 +25,41 @@
     </div>
 
     <!-- BOTONES -->
-    <div class="mb-3">
+    <div class="d-flex justify-content-center gap-2 mb-3">
       <button class="btn btn-primary" onclick="login()">Entrar</button>
+      <button class="btn btn-secondary" onclick="register()">Registrarse</button>
+      <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#infoModal">Info</button>
     </div>
 
-    <div class="mb-3">
-      <button class="btn btn-secondary" onclick="register()">Registrarse</button>
+
     </div>
 
   </div>
 
   <script src="/scripts/login.js"></script>
+
+  <!-- Modal de Información -->
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="infoModalLabel">Instrucciones de registro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Ingresa un nombre de usuario.</li>
+            <li>Ingresa una contraseña.</li>
+            <li>Haz click en "Registrarse" para crear tu cuenta en caso de ser la priemera vez.</li>
+            <li>Luego haz click en "Entrar" para acceder al dashboard.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
