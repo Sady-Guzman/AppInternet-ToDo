@@ -36,7 +36,11 @@ export default async function handler(req, res) {
       if (!user_id) return res.status(400).json({ error: "Falta user_id" });
 
       const result = await pool.query(
-        "SELECT * FROM todos WHERE user_id = $1 ORDER BY id",
+        `SELECT t.id, t.user_id, t.text, t.status, u.username
+        FROM todos t
+        JOIN users u ON t.user_id = u.id
+        WHERE t.user_id = $1
+        ORDER BY t.id`,
         [user_id]
       );
 

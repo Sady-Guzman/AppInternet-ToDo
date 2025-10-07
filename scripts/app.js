@@ -18,6 +18,12 @@ async function loadTodos() {
   const res = await fetch(`/api/todos?user_id=${userId}`);
   const todos = await res.json();
 
+  // titulo personalizado
+  if (todos.length > 0) {
+    const titleEl = document.getElementById("dashboardTitle");
+    titleEl.textContent = `Tareas de ${todos[0].username}`;
+  }
+
   // Limpiar listas
   document.getElementById("pendientes").innerHTML = "";
   document.getElementById("enProgreso").innerHTML = "";
