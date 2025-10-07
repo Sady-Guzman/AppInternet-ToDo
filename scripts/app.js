@@ -21,7 +21,22 @@ async function loadTodos() {
 
     // Badge
     const spanStatus = document.createElement("span");
-    spanStatus.className = "badge bg-secondary mx-2";
+    spanStatus.className = "badge mx-2";
+
+    switch (t.status) {
+      case "pendiente":
+        spanStatus.classList.add("bg-danger"); // rojo
+        break;
+      case "en_progreso":
+        spanStatus.classList.add("bg-warning", "text-dark"); // amarillo con texto oscuro
+        break;
+      case "terminada":
+        spanStatus.classList.add("bg-success"); // verde
+        break;
+      default:
+        spanStatus.classList.add("bg-secondary"); // gris por defecto
+    }
+
     spanStatus.textContent = t.status;
     li.appendChild(spanStatus);
 
