@@ -11,50 +11,36 @@ async function loadTodos() {
   document.getElementById("completados").innerHTML = "";
 
   todos.forEach(t => {
-    const li = document.createElement("li");
-    li.className = "list-group-item d-flex justify-content-between align-items-center";
+    const li = document.createElement("div");
+    li.className = "todo-card";
 
-    // Texto
+    // Texto del ToDo
     const spanText = document.createElement("span");
     spanText.textContent = t.text;
     li.appendChild(spanText);
 
-    // Badge
-    const spanStatus = document.createElement("span");
-    spanStatus.className = "badge mx-2";
+    // Div de botones (dropdown y eliminar)
+    const actionsDiv = document.createElement("div");
+    actionsDiv.className = "d-flex align-items-center gap-1";
 
-    switch (t.status) {
-      case "pendiente":
-        spanStatus.classList.add("bg-danger"); // rojo
-        break;
-      case "en_progreso":
-        spanStatus.classList.add("bg-warning", "text-dark"); // amarillo con texto oscuro
-        break;
-      case "terminada":
-        spanStatus.classList.add("bg-success"); // verde
-        break;
-      default:
-        spanStatus.classList.add("bg-secondary"); // gris por defecto
-    }
-
-    spanStatus.textContent = t.status;
-    li.appendChild(spanStatus);
-
-    // Dropdown para cambiar estado
+    // Dropdown compacto para cambiar estado
     const dropdownDiv = document.createElement("div");
     dropdownDiv.className = "dropdown";
 
     const btn = document.createElement("button");
-    btn.className = "btn btn-sm btn-outline-primary dropdown-toggle";
+    btn.className = "btn btn-sm btn-outline-primary dropdown-toggle p-0";
+    btn.style.width = "30px";
+    btn.style.height = "30px";
     btn.setAttribute("type", "button");
     btn.setAttribute("data-bs-toggle", "dropdown");
-    btn.textContent = "Cambiar estado";
+    btn.textContent = "▼"; // Flecha
+    dropdownDiv.appendChild(btn);
 
     const menu = document.createElement("ul");
     menu.className = "dropdown-menu";
 
     ["pendiente", "en_progreso", "terminada"].forEach(statusOption => {
-      if (statusOption === t.status) return;
+      if (statusOption === t.status) return; // no mostrar estado actual
       const item = document.createElement("li");
       const a = document.createElement("a");
       a.className = "dropdown-item";
@@ -68,23 +54,24 @@ async function loadTodos() {
       menu.appendChild(item);
     });
 
-    dropdownDiv.appendChild(btn);
     dropdownDiv.appendChild(menu);
-    li.appendChild(dropdownDiv);
+    actionsDiv.appendChild(dropdownDiv);
+
+    // Botón eliminar
+    const delBtn = document.createElement("button");
+    delBtn.className = "btn btn-sm btn-outline-danger";
+    delBtn.textContent = "🗑";
+    delBtn.onclick = () => deleteTodo(t.id);
+    actionsDiv.appendChild(delBtn);
+
+    li.appendChild(actionsDiv);
 
     // Agregar a la columna correcta
     if (t.status === "pendiente") document.getElementById("pendientes").appendChild(li);
     if (t.status === "en_progreso") document.getElementById("enProgreso").appendChild(li);
     if (t.status === "terminada") document.getElementById("completados").appendChild(li);
-
-    // Botón eliminar
-    const delBtn = document.createElement("button");
-    delBtn.className = "btn btn-sm btn-outline-danger ms-2";
-    delBtn.textContent = "Eliminar";
-    delBtn.onclick = () => deleteTodo(t.id);
-    li.appendChild(delBtn);
-
   });
+
 }
 
 async function addTodo() {
