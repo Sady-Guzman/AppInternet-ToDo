@@ -1,3 +1,16 @@
+function loadDashboardTitle() {
+  const username = localStorage.getItem("username"); // suponiendo que guardaste username
+  const titleEl = document.getElementById("dashboardTitle");
+  if (username) {
+    titleEl.textContent = `Tareas de ${username}`;
+  } else {
+    titleEl.textContent = "Tareas";
+  }
+}
+
+// Llama a esta función al inicio
+loadDashboardTitle();
+
 async function loadTodos() {
   const userId = localStorage.getItem("user_id");
   if (!userId) return;
@@ -126,6 +139,8 @@ async function changeStatus(id, newStatus) {
 
   loadTodos();
 }
+
+
 
 async function deleteTodo(id) {
   const confirmDelete = confirm("¿Seguro que quieres eliminar este ToDo?");

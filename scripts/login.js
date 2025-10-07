@@ -34,3 +34,10 @@ async function register() {
     alert(data.error);
   }
 }
+
+
+if (res.ok) {
+  localStorage.setItem("user_id", data.user.id);
+  localStorage.setItem("username", data.user.username); // <--- guardar nombre
+  window.location.href = "/index.html";
+}
