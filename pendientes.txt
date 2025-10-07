@@ -1,0 +1,10 @@
+// 
+
+* usar hash para contrasenas en vez de guardar texto plano en NEON.
+* ft. cerrar sesion.
+* cache/cookies para sesion.
+* arreglar front botones login.
+* agg instrucciones sobre login/registro en landing page.
+* ft. Poder borrar tareas.
+* colores rojo, amarillo, verde para cada estado de las tareas.
+* documentar repo y proyecto en github.

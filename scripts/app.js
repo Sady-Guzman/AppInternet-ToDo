@@ -86,6 +86,11 @@ async function addTodo() {
   loadTodos();
 }
 
+function logout() {
+  localStorage.removeItem("user_id"); // elimina el id del usuario
+  window.location.href = "/login.html"; // redirige al login
+}
+
 async function changeStatus(id, newStatus) {
   const res = await fetch("/api/todos", {
     method: "PATCH",
