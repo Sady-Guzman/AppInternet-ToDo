@@ -38,11 +38,14 @@ Tests aprobados.
 
 ## Api Endpoints             
 
-| N | Método | Endpoint | Descripción | ​
-| --- | --- | --- | --- | ​
-| 1 | POST | /api/users/register | Registro de nuevo usuario | ​
-| 2 | POST | /api/users/login | Login; devuelve token/cookie; el cliente puede guardar user_id | ​
-| 3 | GET | /api/todos?user_id=X | Cargar tareas del usuario al abrir el dashboard | ​
-| 4 | POST | /api/todos | Agregar tarea | ​
-| 5 | PATCH | /api/todos/:id | Cambiar estado de una tarea | ​
-| 6 | DELETE | /api/todos/:id | Eliminar tarea |
+## 📡 Endpoints de la API
+
+| N° | Método | Endpoint | Descripción |
+|----|---------|-----------|--------------|
+| 1  | **POST** | `/api/users/register` | Registro de un nuevo usuario. |
+| 2  | **POST** | `/api/users/login` | Inicio de sesión; devuelve un token o cookie. El cliente puede guardar el `user_id`. |
+| 3  | **GET**  | `/api/todos?user_id=X` | Obtiene las tareas del usuario al abrir el dashboard. |
+| 4  | **POST** | `/api/todos` | Agrega una nueva tarea. |
+| 5  | **PATCH** | `/api/todos/:id` | Cambia el estado de una tarea existente. |
+| 6  | **DELETE** | `/api/todos/:id` | Elimina una tarea. |
+
