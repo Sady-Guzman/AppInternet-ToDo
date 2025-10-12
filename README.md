@@ -16,8 +16,8 @@ Registrarse como usuario para ingresar.
 
 ## Screenshots
 
-![alt text](image/image.png)
-![alt text](image/image-1.png)
+![alt text](image/image.png)  
+![alt text](image/image-1.png)  
 
 ## Tests
 
@@ -27,14 +27,14 @@ Se integran 2 tests con github actions que se ejecutan automaticamente con cada 
 
 Verifica que endpoint de Login responde correctamente.
 Verifica que se puede crear un ToDo exitosamente (POST api/todos)
-![alt text](image/image-2.png)
-Estructura proyecto y tests.
-![alt text](image/image-3.png)
-Agrega URL de NEON como secreto al repositorio.
-![alt text](image/image-5.png)
-Tests ejecutandose al hacer un push al repositorio
-![alt text](image/image-6.png)
-Tests aprobados.
+![alt text](image/image-2.png)  
+Estructura proyecto y tests.  
+![alt text](image/image-3.png)  
+Agrega URL de NEON como secreto al repositorio.  
+![alt text](image/image-5.png)  
+Tests ejecutandose al hacer un push al repositorio  
+![alt text](image/image-6.png)  
+Tests aprobados.  
 
 ## Api Endpoints
 
