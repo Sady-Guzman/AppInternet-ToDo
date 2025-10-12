@@ -2,10 +2,10 @@
 Laboratorio para Aplicaciones de Internet - ULS
 
 # Stack
-HTML, CSS, Bootstrap, JS
-Desplegado en Vercel
-Integración CI/CD con Github
-DB serverless NEON (Postgresql)
+HTML, CSS, Bootstrap, JS<br>
+Desplegado en Vercel<br>
+Integración CI/CD con Github<br>
+DB serverless NEON (Postgresql)<br>
 
 
 # Aplicación desplegada
