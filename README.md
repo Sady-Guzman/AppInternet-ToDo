@@ -9,4 +9,4 @@ DB serverless NEON (Postgresql)
 
 
 # Aplicación desplegada
-[todo.sady.cl](www.todo.sady.cl)
+[todo.sady.cl](https://todo.sady.cl)
