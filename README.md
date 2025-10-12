@@ -36,13 +36,13 @@ Tests ejecutandose al hacer un push al repositorio
 ![alt text](image/image-6.png)  
 Tests aprobados.  
 
-## Api Endpoints
+## Api Endpoints             
 
-N  |  Endpoint               |  Descripción                          
----+-------------------------+---------------------------------------
-1  |  /api/users (register)  |  Registro nuevo usuario               
-2  |  /api/users (login)     |  Login, guarda user_id en localStorage
-3  |  /api/todos?user_id=X   |  Carga tareas al abrir dashboard      
-4  |  /api/todos (POST)      |  Agregar tarea                        
-5  |  /api/todos (PATCH)     |  Cambiar estado de tarea              
-6  |  /api/todos (DELETE)    |  Eliminar tarea                       
+| N | Método | Endpoint | Descripción | ​
+| --- | --- | --- | --- | ​
+| 1 | POST | /api/users/register | Registro de nuevo usuario | ​
+| 2 | POST | /api/users/login | Login; devuelve token/cookie; el cliente puede guardar user_id | ​
+| 3 | GET | /api/todos?user_id=X | Cargar tareas del usuario al abrir el dashboard | ​
+| 4 | POST | /api/todos | Agregar tarea | ​
+| 5 | PATCH | /api/todos/:id | Cambiar estado de una tarea | ​
+| 6 | DELETE | /api/todos/:id | Eliminar tarea |
