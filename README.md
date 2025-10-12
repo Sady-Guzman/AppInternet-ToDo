@@ -38,11 +38,11 @@ Tests aprobados.
 
 ## Api Endpoints
 
-N | Endpoint | Descripción  
+N  |  Endpoint               |  Descripción                          
 ---+-------------------------+---------------------------------------
-1 | /api/users (register) | Registro nuevo usuario  
-2 | /api/users (login) | Login, guarda user_id en localStorage
-3 | /api/todos?user_id=X | Carga tareas al abrir dashboard  
-4 | /api/todos (POST) | Agregar tarea  
-5 | /api/todos (PATCH) | Cambiar estado de tarea  
-6 | /api/todos (DELETE) | Eliminar tarea
+1  |  /api/users (register)  |  Registro nuevo usuario               
+2  |  /api/users (login)     |  Login, guarda user_id en localStorage
+3  |  /api/todos?user_id=X   |  Carga tareas al abrir dashboard      
+4  |  /api/todos (POST)      |  Agregar tarea                        
+5  |  /api/todos (PATCH)     |  Cambiar estado de tarea              
+6  |  /api/todos (DELETE)    |  Eliminar tarea                       
