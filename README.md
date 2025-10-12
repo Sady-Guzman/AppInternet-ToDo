@@ -1,4 +1,4 @@
-# AppInternet_ToDo
+# AppInternet ToDo
 Laboratorio para Aplicaciones de Internet - ULS
 
 # Stack
